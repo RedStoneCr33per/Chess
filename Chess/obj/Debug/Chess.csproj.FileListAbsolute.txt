@@ -9,3 +9,7 @@ c:\users\petedarden\documents\visual studio 2013\Projects\Chess\Chess\obj\Debug\
 c:\users\petedarden\documents\visual studio 2013\Projects\Chess\Chess\obj\Debug\Chess.pdb
 c:\users\petedarden\documents\visual studio 2013\Projects\Chess\Chess\bin\Debug\P1Pawn.png
 c:\users\petedarden\documents\visual studio 2013\Projects\Chess\Chess\bin\Debug\P1Rook.png
+C:\Users\petedarden\documents\visual studio 2013\Projects\Chess\Chess\bin\Debug\P1Bishop.png
+C:\Users\petedarden\documents\visual studio 2013\Projects\Chess\Chess\bin\Debug\P1King.png
+C:\Users\petedarden\documents\visual studio 2013\Projects\Chess\Chess\bin\Debug\P1Queen.png
+C:\Users\petedarden\documents\visual studio 2013\Projects\Chess\Chess\bin\Debug\P1Knight.png

@@ -33,8 +33,20 @@ namespace Chess
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            zeroOne.ImageLocation = "P1Pawn.png";
             oneOne.ImageLocation = "P1Pawn.png";
+            twoOne.ImageLocation = "P1Pawn.png";
+            threeOne.ImageLocation = "P1Pawn.png";
+            fourOne.ImageLocation = "P1Pawn.png";
+            fiveOne.ImageLocation = "P1Pawn.png";
+            sixOne.ImageLocation = "P1Pawn.png";
+            sevenOne.ImageLocation = "P1Pawn.png";
             zeroZero.ImageLocation = "P1Rook.png";
+            oneZero.ImageLocation = "P1Bishop.png";
+            twoZero.ImageLocation = "P1Knight.png";
+            fiveZero.ImageLocation = "P1Knight.png";
+            sixZero.ImageLocation = "P1Bishop.png";
+            sevenZero.ImageLocation = "P1Rook.png";
         }
 
         private void handleClicks(int x, int y, PictureBox pb)

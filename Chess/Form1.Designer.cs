@@ -607,7 +607,7 @@
             this.sixFive.Size = new System.Drawing.Size(50, 50);
             this.sixFive.TabIndex = 55;
             this.sixFive.TabStop = false;
-            this.sixFive.Click += new System.EventHandler(this.sevenFive_Click);
+            this.sixFive.Click += new System.EventHandler(this.sixFive_Click);
             // 
             // fiveFive
             // 
@@ -618,7 +618,7 @@
             this.fiveFive.Size = new System.Drawing.Size(50, 50);
             this.fiveFive.TabIndex = 54;
             this.fiveFive.TabStop = false;
-            this.fiveFive.Click += new System.EventHandler(this.sixFive_Click);
+            this.fiveFive.Click += new System.EventHandler(this.fiveFive_Click);
             // 
             // fourFive
             // 

@@ -17,17 +17,51 @@ namespace Chess
 
         private void addPiecesToGameList()
         {
-            this.PieceList.Add(new PieceTracker() 
-            { 
-                Piece = new Pawn() { Name = "P1 Pawn", ImageString = "P1Pawn.png" },
-                Coordinate = new Coordinate() 
-                { xCoordinate = 1, yCoordinate = 1 }
-            });
+            for (int i = 0; i <= 7; i++)
+            {
+                this.PieceList.Add(new PieceTracker()
+                {
+                    Piece = new Player1Pawn() { Name = "P1 Pawn", ImageString = "P1Pawn.png" },
+                    Coordinate = new Coordinate() { xCoordinate = i, yCoordinate = 1 }
+                });
+            }
 
             this.PieceList.Add(new PieceTracker()
             {
                 Piece = new Rook() { Name = "P1 Rook", ImageString = "P1Rook.png" },
                 Coordinate = new Coordinate() { xCoordinate = 0, yCoordinate = 0 }
+            });
+
+            this.PieceList.Add(new PieceTracker()
+            {
+                Piece = new Bishop() { Name = "P1 Bishop", ImageString = "P1Bishop.png" },
+                Coordinate = new Coordinate() { xCoordinate = 1, yCoordinate = 0 }
+            });
+
+            this.PieceList.Add(new PieceTracker()
+            {
+                Piece = new Knight() { Name = "P1 Knight", ImageString = "P1Knight.png" },
+                Coordinate = new Coordinate() { xCoordinate = 5, yCoordinate = 0 }
+            });
+
+
+            this.PieceList.Add(new PieceTracker()
+            {
+                Piece = new Knight() { Name = "P1 Knight", ImageString = "P1Knight.png" },
+                Coordinate = new Coordinate() { xCoordinate = 2, yCoordinate = 0 }
+            });
+
+            this.PieceList.Add(new PieceTracker()
+            {
+                Piece = new Bishop() { Name = "P1 Bishop", ImageString = "P1Bishop.png" },
+                Coordinate = new Coordinate() { xCoordinate = 6, yCoordinate = 0 }
+            });
+
+
+            this.PieceList.Add(new PieceTracker()
+            {
+                Piece = new Rook() { Name = "P1 Rook", ImageString = "P1Rook.png" },
+                Coordinate = new Coordinate() { xCoordinate = 7, yCoordinate = 0 }
             });
         }
 
