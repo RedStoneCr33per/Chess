@@ -1,0 +1,11 @@
+c:\users\petedarden\documents\visual studio 2013\Projects\Chess\Chess\bin\Debug\Chess.exe.config
+c:\users\petedarden\documents\visual studio 2013\Projects\Chess\Chess\bin\Debug\Chess.exe
+c:\users\petedarden\documents\visual studio 2013\Projects\Chess\Chess\bin\Debug\Chess.pdb
+c:\users\petedarden\documents\visual studio 2013\Projects\Chess\Chess\obj\Debug\Chess.csprojResolveAssemblyReference.cache
+c:\users\petedarden\documents\visual studio 2013\Projects\Chess\Chess\obj\Debug\Chess.Form1.resources
+c:\users\petedarden\documents\visual studio 2013\Projects\Chess\Chess\obj\Debug\Chess.Properties.Resources.resources
+c:\users\petedarden\documents\visual studio 2013\Projects\Chess\Chess\obj\Debug\Chess.csproj.GenerateResource.Cache
+c:\users\petedarden\documents\visual studio 2013\Projects\Chess\Chess\obj\Debug\Chess.exe
+c:\users\petedarden\documents\visual studio 2013\Projects\Chess\Chess\obj\Debug\Chess.pdb
+c:\users\petedarden\documents\visual studio 2013\Projects\Chess\Chess\bin\Debug\P1Pawn.png
+c:\users\petedarden\documents\visual studio 2013\Projects\Chess\Chess\bin\Debug\P1Rook.png
