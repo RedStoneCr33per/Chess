@@ -6,13 +6,14 @@ using System.Threading.Tasks;
 
 namespace Chess
 {
-    class Player1Pawn : Piece
+    class BlackPawn : Piece
     {
         public override bool Move(Coordinate oldCoordinate, Coordinate newCoordinate)
         {
             bool checkMove = false;
 
-            if (oldCoordinate.xCoordinate == newCoordinate.xCoordinate && oldCoordinate.yCoordinate + 1 == newCoordinate.yCoordinate)
+            if (oldCoordinate.xCoordinate == newCoordinate.xCoordinate && oldCoordinate.yCoordinate -
+                1 == newCoordinate.yCoordinate)
             {
                 checkMove = true;
             }

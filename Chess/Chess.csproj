@@ -53,12 +53,14 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Game.cs" />
+    <Compile Include="King.cs" />
     <Compile Include="Knight.cs" />
-    <Compile Include="Player1Pawn.cs" />
+    <Compile Include="WhitePawn.cs" />
     <Compile Include="Piece.cs" />
-    <Compile Include="Player2Pawn.cs" />
+    <Compile Include="BlackPawn.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Queen.cs" />
     <Compile Include="Rook.cs" />
     <Compile Include="PieceTracker.cs" />
     <EmbeddedResource Include="Form1.resx">
@@ -87,22 +89,40 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="P1Bishop.png">
+    <Content Include="PieceImages\P1Bishop.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="P1King.png">
+    <Content Include="PieceImages\P1King.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="P1Knight.png">
+    <Content Include="PieceImages\P1Knight.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="P1Pawn.png">
+    <Content Include="PieceImages\P1Pawn.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="P1Queen.png">
+    <Content Include="PieceImages\P1Queen.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="P1Rook.png">
+    <Content Include="PieceImages\P1Rook.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="PieceImages\P2Bishop.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="PieceImages\P2King.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="PieceImages\P2Knight.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="PieceImages\P2Pawn.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="PieceImages\P2Queen.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="PieceImages\P2Rook.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

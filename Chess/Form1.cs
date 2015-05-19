@@ -15,11 +15,11 @@ namespace Chess
         static bool clicked;
         static Coordinate oldCoordinate;
         static Coordinate newCoordinate;
-        static string output;
+        static string output = "";
         static Game game;
         static PictureBox pictureBox1;
         static PictureBox pictureBox2;
-
+        static Player currentPlayer;
 
         public Form1()
         {
@@ -29,28 +29,64 @@ namespace Chess
             newCoordinate = new Coordinate();
             game = new Game();
             game.PlayGame();
+            currentPlayer = game.CurrentPlayer;
+            gameLabel.Text = game.CurrentPlayer.ToString() + " player's" + " turn...";
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            zeroOne.ImageLocation = "P1Pawn.png";
-            oneOne.ImageLocation = "P1Pawn.png";
-            twoOne.ImageLocation = "P1Pawn.png";
-            threeOne.ImageLocation = "P1Pawn.png";
-            fourOne.ImageLocation = "P1Pawn.png";
-            fiveOne.ImageLocation = "P1Pawn.png";
-            sixOne.ImageLocation = "P1Pawn.png";
-            sevenOne.ImageLocation = "P1Pawn.png";
-            zeroZero.ImageLocation = "P1Rook.png";
-            oneZero.ImageLocation = "P1Bishop.png";
-            twoZero.ImageLocation = "P1Knight.png";
-            fiveZero.ImageLocation = "P1Knight.png";
-            sixZero.ImageLocation = "P1Bishop.png";
-            sevenZero.ImageLocation = "P1Rook.png";
+            #region whitePieces
+
+            zeroOne.ImageLocation = @"PieceImages/P1Pawn.png";
+            oneOne.ImageLocation = @"PieceImages/P1Pawn.png";
+            twoOne.ImageLocation = @"PieceImages/P1Pawn.png";
+            threeOne.ImageLocation = @"PieceImages/P1Pawn.png";
+            fourOne.ImageLocation = @"PieceImages/P1Pawn.png";
+            fiveOne.ImageLocation = @"PieceImages/P1Pawn.png";
+            sixOne.ImageLocation = @"PieceImages/P1Pawn.png";
+            sevenOne.ImageLocation = @"PieceImages/P1Pawn.png";
+            zeroZero.ImageLocation = @"PieceImages/P1Rook.png";
+            oneZero.ImageLocation = @"PieceImages/P1Bishop.png";
+            twoZero.ImageLocation = @"PieceImages/P1Knight.png";
+            threeZero.ImageLocation = @"PieceImages/P1Queen.png";
+            fourZero.ImageLocation = @"PieceImages/P1King.png";
+            fiveZero.ImageLocation = @"PieceImages/P1Knight.png";
+            sixZero.ImageLocation = @"PieceImages/P1Bishop.png";
+            sevenZero.ImageLocation = @"PieceImages/P1Rook.png";
+
+            #endregion
+
+            #region blackPieces
+
+            zeroSix.ImageLocation = @"PieceImages/P2Pawn.png";
+            oneSix.ImageLocation = @"PieceImages/P2Pawn.png";
+            twoSix.ImageLocation = @"PieceImages/P2Pawn.png";
+            threeSix.ImageLocation = @"PieceImages/P2Pawn.png";
+            fourSix.ImageLocation = @"PieceImages/P2Pawn.png";
+            fiveSix.ImageLocation = @"PieceImages/P2Pawn.png";
+            sixSix.ImageLocation = @"PieceImages/P2Pawn.png";
+            sevenSix.ImageLocation = @"PieceImages/P2Pawn.png";
+            zeroSeven.ImageLocation = @"PieceImages/P2Rook.png";
+            oneSeven.ImageLocation = @"PieceImages/P2Bishop.png";
+            twoSeven.ImageLocation = @"PieceImages/P2Knight.png";
+            threeSeven.ImageLocation = @"PieceImages/P2Queen.png";
+            fourSeven.ImageLocation = @"PieceImages/P2King.png";
+            fiveSeven.ImageLocation = @"PieceImages/P2Knight.png";
+            sixSeven.ImageLocation = @"PieceImages/P2Bishop.png";
+            sevenSeven.ImageLocation = @"PieceImages/P2Rook.png";
+
+            #endregion
         }
 
         private void handleClicks(int x, int y, PictureBox pb)
         {
+            output = "";
+
+            List<PieceTracker> pieceListAtOldCoordinate = (from piece in game.PieceList
+                                                           where piece.Coordinate.xCoordinate.Equals(oldCoordinate.xCoordinate)
+                                                           & piece.Coordinate.yCoordinate.Equals(oldCoordinate.yCoordinate)
+                                                           select piece).ToList();
+
             if (!clicked)
             {
                 gameLabel.Text = "";
@@ -58,8 +94,8 @@ namespace Chess
                 oldCoordinate.yCoordinate = y;
                 clicked = true;
                 gameLabel.Text = "Click another square...";
-                output = "Coordinate 1: (" + oldCoordinate.xCoordinate + "," + oldCoordinate.yCoordinate + ")";
                 pictureBox1 = pb;
+                return;
             }
 
             else
@@ -75,20 +111,38 @@ namespace Chess
                     pictureBox2 = new PictureBox();
                 }
 
+
                 else
                 {
-                    output += "\r\nCoordinate 2: (" + newCoordinate.xCoordinate + "," + newCoordinate.yCoordinate + ")";
                     pictureBox2 = pb;
-                    List<PieceTracker> pieceList = (from piece in game.PieceList
-                                                    where piece.Coordinate.xCoordinate.Equals(oldCoordinate.xCoordinate)
-                                                    & piece.Coordinate.yCoordinate.Equals(oldCoordinate.yCoordinate)
-                                                    select piece).ToList();
-                    if (pieceList.Count == 1)
-                    {
-                        //pieceList[0].Piece.Move();
 
-                        if (pieceList[0].Piece.Move( oldCoordinate, newCoordinate))
+                    List<PieceTracker> pieceListAtNewCoordinate = (from piece in game.PieceList
+                                                                   where piece.Coordinate.xCoordinate.Equals(newCoordinate.xCoordinate)
+                                                                   & piece.Coordinate.yCoordinate.Equals(newCoordinate.yCoordinate)
+                                                                   select piece).ToList();
+
+                    if (pieceListAtNewCoordinate.Count == 1 && pieceListAtNewCoordinate[0].Player == currentPlayer)
+                    {
+                        output = "Square contains one of your pieces...";
+                        pictureBox1 = new PictureBox();
+                        pictureBox2 = new PictureBox();
+                    }
+
+
+                    else if (pieceListAtOldCoordinate.Count == 1 && pieceListAtOldCoordinate[0].Player == currentPlayer)
+                    {
+                        if (pieceListAtOldCoordinate[0].Piece.Move(oldCoordinate, newCoordinate))
                         {
+                            if (pieceListAtNewCoordinate.Count == 1 && pieceListAtNewCoordinate[0].Player != currentPlayer)
+                            {
+                                //TAKE PIECE!
+                                output = output = pieceListAtOldCoordinate[0].Piece.Name.ToString()
+                                    + " takes a " + pieceListAtNewCoordinate[0].Piece.Name.ToString() + "!";
+                                int pieceToBeRemoved = game.PieceList.FindIndex(piece =>
+                                piece.Coordinate.xCoordinate == newCoordinate.xCoordinate && piece.Coordinate.yCoordinate == newCoordinate.yCoordinate);
+                                game.PieceList.RemoveAt(pieceToBeRemoved);
+                                game.PieceList.Count();
+                            }
 
                             int pieceIndex = game.PieceList.FindIndex(piece =>
                                 piece.Coordinate.xCoordinate == oldCoordinate.xCoordinate && piece.Coordinate.yCoordinate == oldCoordinate.yCoordinate);
@@ -100,7 +154,22 @@ namespace Chess
                             };
 
                             pictureBox1.ImageLocation = "";
-                            pictureBox2.ImageLocation = pieceList[0].Piece.ImageString;
+                            pictureBox2.ImageLocation = pieceListAtOldCoordinate[0].Piece.ImageString;
+                            game.PlayGame();
+                            currentPlayer = game.CurrentPlayer;
+
+                            if (output.Contains("takes a"))
+                            {
+                                output += " " + game.CurrentPlayer.ToString() + " player's" + " turn...";
+                            }
+
+                            else
+                            {
+                                output = game.CurrentPlayer.ToString() + " player's" + " turn...";
+                            }
+
+
+                            //output = game.CurrentPlayer.ToString() + " player's" + " turn...";
 
                         }
 
@@ -111,30 +180,16 @@ namespace Chess
                             pictureBox2 = new PictureBox();
 
                         }
-
-                        ////int pieceIndex = game.PieceList.FindIndex(piece =>
-                        ////    piece.Coordinate.xCoordinate == coordinate1.xCoordinate && piece.Coordinate.yCoordinate == coordinate1.yCoordinate);
-                        
-                        ////game.PieceList[pieceIndex].Coordinate = new Coordinate()
-                        ////{
-                        ////    xCoordinate = coordinate2.xCoordinate,
-                        ////    yCoordinate = coordinate2.yCoordinate
-                        ////};
-                        
-                        ////pictureBox1.ImageLocation = "";
-                        ////pictureBox2.ImageLocation = "P1Pawn.png";
                     }
 
                     else
                     {
-                        output = "Illegal move...";
+                        output = game.CurrentPlayer.ToString() + " player's" + " turn...";
                         pictureBox1 = new PictureBox();
                         pictureBox2 = new PictureBox();
 
                     }
 
-                    //pictureBox1.ImageLocation = "";
-                    //pictureBox2.ImageLocation = "P1Pawn.png";
                 }
 
                 gameLabel.Text = output;

@@ -10,6 +10,6 @@ namespace Chess
     {
         public Piece Piece { get; set; }
         public Coordinate Coordinate { get; set; }
-        
+        public Player Player { get; set; }
     }
 }
