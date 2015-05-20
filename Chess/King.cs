@@ -13,15 +13,15 @@ namespace Chess
         {
             bool checkMove = false;
 
-            if ((newCoordinate.xCoordinate - oldCoordinate.xCoordinate == 1 && newCoordinate.yCoordinate - oldCoordinate.yCoordinate == 1)
-                || (oldCoordinate.xCoordinate - newCoordinate.xCoordinate == 1 && oldCoordinate.yCoordinate - newCoordinate.yCoordinate == 1)
-                || (newCoordinate.xCoordinate - oldCoordinate.xCoordinate == 1 && oldCoordinate.yCoordinate - newCoordinate.yCoordinate == 1)
-                || (oldCoordinate.xCoordinate - newCoordinate.xCoordinate == 1 && newCoordinate.yCoordinate - oldCoordinate.yCoordinate == 1)
-                || (newCoordinate.xCoordinate - oldCoordinate.xCoordinate == 1 && newCoordinate.yCoordinate == oldCoordinate.yCoordinate)
-                || (oldCoordinate.xCoordinate == newCoordinate.xCoordinate && oldCoordinate.yCoordinate - newCoordinate.yCoordinate == 1)
-                || (oldCoordinate.xCoordinate - newCoordinate.xCoordinate == 1 && oldCoordinate.yCoordinate == newCoordinate.yCoordinate)
-                || (oldCoordinate.xCoordinate == newCoordinate.xCoordinate && oldCoordinate.yCoordinate - newCoordinate.yCoordinate == 1)
-                || (oldCoordinate.xCoordinate == newCoordinate.xCoordinate && newCoordinate.yCoordinate - oldCoordinate.yCoordinate == 1))
+            if ((newCoordinate.XCoordinate - oldCoordinate.XCoordinate == 1 && newCoordinate.YCoordinate - oldCoordinate.YCoordinate == 1)
+                || (oldCoordinate.XCoordinate - newCoordinate.XCoordinate == 1 && oldCoordinate.YCoordinate - newCoordinate.YCoordinate == 1)
+                || (newCoordinate.XCoordinate - oldCoordinate.XCoordinate == 1 && oldCoordinate.YCoordinate - newCoordinate.YCoordinate == 1)
+                || (oldCoordinate.XCoordinate - newCoordinate.XCoordinate == 1 && newCoordinate.YCoordinate - oldCoordinate.YCoordinate == 1)
+                || (newCoordinate.XCoordinate - oldCoordinate.XCoordinate == 1 && newCoordinate.YCoordinate == oldCoordinate.YCoordinate)
+                || (oldCoordinate.XCoordinate == newCoordinate.XCoordinate && oldCoordinate.YCoordinate - newCoordinate.YCoordinate == 1)
+                || (oldCoordinate.XCoordinate - newCoordinate.XCoordinate == 1 && oldCoordinate.YCoordinate == newCoordinate.YCoordinate)
+                || (oldCoordinate.XCoordinate == newCoordinate.XCoordinate && oldCoordinate.YCoordinate - newCoordinate.YCoordinate == 1)
+                || (oldCoordinate.XCoordinate == newCoordinate.XCoordinate && newCoordinate.YCoordinate - oldCoordinate.YCoordinate == 1))
             {
                 checkMove = true;
             }

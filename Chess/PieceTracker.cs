@@ -6,10 +6,46 @@ using System.Threading.Tasks;
 
 namespace Chess
 {
-    class PieceTracker
+    public class PieceTracker
     {
-        public Piece Piece { get; set; }
-        public Coordinate Coordinate { get; set; }
-        public Player Player { get; set; }
+        private Piece piece;
+        private Coordinate coordinate;
+        private Player player;
+
+        public Piece Piece
+        {
+            get
+            {
+                return piece;
+            }
+            set
+            {
+                piece = value;
+            }
+        }
+
+        public Coordinate Coordinate
+        {
+            get
+            {
+                return coordinate;
+            }
+            set
+            {
+                coordinate = value;
+            }
+        }
+
+        public Player Player
+        {
+            get
+            {
+                return player;
+            }
+            set
+            {
+                player = value;
+            }
+        }
     }
 }

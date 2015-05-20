@@ -6,16 +6,27 @@ using System.Threading.Tasks;
 
 namespace Chess
 {
-    abstract class Piece
+    abstract public class Piece
     {
-        public string Name { get; set; }
-        public string ImageString { get; set; }
+        private string name;
+        private string imageString;
 
+        public string Name
+        {
+            get { return name; }
+            set { name = value; }
+        }
+
+        public string ImageString
+        {
+            get { return imageString; }
+            set { imageString = value; }
+        }
+        
         public virtual bool Move(Coordinate oldCoordinate, Coordinate newCoordinate)
         {
             bool checkMove = false;
             return checkMove;
-
         }
     }
 }

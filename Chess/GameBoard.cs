@@ -10,20 +10,31 @@ using System.Windows.Forms;
 
 namespace Chess
 {
-    public partial class Form1 : Form
+    public partial class GameBoard : Form
     {
         static bool clicked;
         static Coordinate oldCoordinate;
         static Coordinate newCoordinate;
         static string output = "";
-        static Game game;
+        public  static Game game;
         static PictureBox pictureBox1;
+        static Color pictureBox1Color;
         static PictureBox pictureBox2;
+        static Color pictureBox2Color;
         static Player currentPlayer;
 
-        public Form1()
+        public GameBoard()
         {
             InitializeComponent();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            startGame();
+        }
+
+        private void startGame()
+        {
             clicked = false;
             oldCoordinate = new Coordinate();
             newCoordinate = new Coordinate();
@@ -31,10 +42,7 @@ namespace Chess
             game.PlayGame();
             currentPlayer = game.CurrentPlayer;
             gameLabel.Text = game.CurrentPlayer.ToString() + " player's" + " turn...";
-        }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
             #region whitePieces
 
             zeroOne.ImageLocation = @"PieceImages/P1Pawn.png";
@@ -83,47 +91,54 @@ namespace Chess
             output = "";
 
             List<PieceTracker> pieceListAtOldCoordinate = (from piece in game.PieceList
-                                                           where piece.Coordinate.xCoordinate.Equals(oldCoordinate.xCoordinate)
-                                                           & piece.Coordinate.yCoordinate.Equals(oldCoordinate.yCoordinate)
+                                                           where piece.Coordinate.XCoordinate.Equals(oldCoordinate.XCoordinate)
+                                                           & piece.Coordinate.YCoordinate.Equals(oldCoordinate.YCoordinate)
                                                            select piece).ToList();
 
             if (!clicked)
             {
                 gameLabel.Text = "";
-                oldCoordinate.xCoordinate = x;
-                oldCoordinate.yCoordinate = y;
+                oldCoordinate.XCoordinate = x;
+                oldCoordinate.YCoordinate = y;
                 clicked = true;
                 gameLabel.Text = "Click another square...";
                 pictureBox1 = pb;
+                pictureBox1Color = pb.BackColor;
+                pb.BackColor = Color.Red;
                 return;
             }
 
             else
             {
-                newCoordinate.xCoordinate = x;
-                newCoordinate.yCoordinate = y;
+                newCoordinate.XCoordinate = x;
+                newCoordinate.YCoordinate = y;
                 clicked = false;
 
-                if (oldCoordinate.xCoordinate == newCoordinate.xCoordinate && oldCoordinate.yCoordinate == newCoordinate.yCoordinate)
+                if (oldCoordinate.XCoordinate == newCoordinate.XCoordinate && oldCoordinate.YCoordinate == newCoordinate.YCoordinate)
                 {
                     output = "Squares must be different...";
+                    pictureBox1.BackColor = pictureBox1Color;
                     pictureBox1 = new PictureBox();
                     pictureBox2 = new PictureBox();
                 }
 
-
                 else
                 {
                     pictureBox2 = pb;
+                    pictureBox2Color = pb.BackColor;
+                    pb.BackColor = Color.Red;
+
 
                     List<PieceTracker> pieceListAtNewCoordinate = (from piece in game.PieceList
-                                                                   where piece.Coordinate.xCoordinate.Equals(newCoordinate.xCoordinate)
-                                                                   & piece.Coordinate.yCoordinate.Equals(newCoordinate.yCoordinate)
+                                                                   where piece.Coordinate.XCoordinate.Equals(newCoordinate.XCoordinate)
+                                                                   & piece.Coordinate.YCoordinate.Equals(newCoordinate.YCoordinate)
                                                                    select piece).ToList();
 
                     if (pieceListAtNewCoordinate.Count == 1 && pieceListAtNewCoordinate[0].Player == currentPlayer)
                     {
                         output = "Square contains one of your pieces...";
+                        pictureBox1.BackColor = pictureBox1Color;
+                        pictureBox2.BackColor = pictureBox2Color;
                         pictureBox1 = new PictureBox();
                         pictureBox2 = new PictureBox();
                     }
@@ -139,18 +154,18 @@ namespace Chess
                                 output = output = pieceListAtOldCoordinate[0].Piece.Name.ToString()
                                     + " takes a " + pieceListAtNewCoordinate[0].Piece.Name.ToString() + "!";
                                 int pieceToBeRemoved = game.PieceList.FindIndex(piece =>
-                                piece.Coordinate.xCoordinate == newCoordinate.xCoordinate && piece.Coordinate.yCoordinate == newCoordinate.yCoordinate);
+                                piece.Coordinate.XCoordinate == newCoordinate.XCoordinate && piece.Coordinate.YCoordinate == newCoordinate.YCoordinate);
                                 game.PieceList.RemoveAt(pieceToBeRemoved);
                                 game.PieceList.Count();
                             }
 
                             int pieceIndex = game.PieceList.FindIndex(piece =>
-                                piece.Coordinate.xCoordinate == oldCoordinate.xCoordinate && piece.Coordinate.yCoordinate == oldCoordinate.yCoordinate);
+                                piece.Coordinate.XCoordinate == oldCoordinate.XCoordinate && piece.Coordinate.YCoordinate == oldCoordinate.YCoordinate);
 
                             game.PieceList[pieceIndex].Coordinate = new Coordinate()
                             {
-                                xCoordinate = newCoordinate.xCoordinate,
-                                yCoordinate = newCoordinate.yCoordinate
+                                XCoordinate = newCoordinate.XCoordinate,
+                                YCoordinate = newCoordinate.YCoordinate
                             };
 
                             pictureBox1.ImageLocation = "";
@@ -168,26 +183,28 @@ namespace Chess
                                 output = game.CurrentPlayer.ToString() + " player's" + " turn...";
                             }
 
-
-                            //output = game.CurrentPlayer.ToString() + " player's" + " turn...";
+                            pictureBox1.BackColor = pictureBox1Color;
+                            pictureBox2.BackColor = pictureBox2Color;
 
                         }
 
                         else
                         {
                             output = "Illegal move...";
+                            pictureBox1.BackColor = pictureBox1Color;
+                            pictureBox2.BackColor = pictureBox2Color;
                             pictureBox1 = new PictureBox();
                             pictureBox2 = new PictureBox();
-
                         }
                     }
 
                     else
                     {
                         output = game.CurrentPlayer.ToString() + " player's" + " turn...";
+                        pictureBox1.BackColor = pictureBox1Color;
+                        pictureBox2.BackColor = pictureBox2Color;
                         pictureBox1 = new PictureBox();
                         pictureBox2 = new PictureBox();
-
                     }
 
                 }
@@ -717,6 +734,8 @@ namespace Chess
         }
 
         #endregion
+
+
 
     }
 }

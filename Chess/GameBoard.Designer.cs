@@ -1,6 +1,6 @@
 ﻿namespace Chess
 {
-    partial class Form1
+    partial class GameBoard
     {
         /// <summary>
         /// Required designer variable.
@@ -841,7 +841,7 @@
             this.zeroFour.TabStop = false;
             this.zeroFour.Click += new System.EventHandler(this.zeroFour_Click);
             // 
-            // Form1
+            // GameBoard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -911,7 +911,7 @@
             this.Controls.Add(this.oneZero);
             this.Controls.Add(this.zeroZero);
             this.Controls.Add(this.gameLabel);
-            this.Name = "Form1";
+            this.Name = "GameBoard";
             this.Text = "Chess";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.zeroZero)).EndInit();

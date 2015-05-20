@@ -6,9 +6,33 @@ using System.Threading.Tasks;
 
 namespace Chess
 {
-    class Coordinate
+    public class Coordinate
     {
-        public int xCoordinate { get; set; }
-        public int yCoordinate { get; set; }
+        private int xCoordinate;
+        private int yCoordinate;
+
+        public int XCoordinate
+        {
+            get
+            {
+                return xCoordinate;
+            }
+            set
+            {
+                xCoordinate = value;
+            }
+        }
+
+        public int YCoordinate
+        {
+            get
+            {
+                return yCoordinate;
+            }
+            set
+            {
+                yCoordinate = value;
+            }
+        }
     }
 }

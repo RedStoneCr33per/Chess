@@ -12,7 +12,7 @@ namespace Chess
         {
             bool checkMove = false;
 
-            if (oldCoordinate.xCoordinate == newCoordinate.xCoordinate || oldCoordinate.yCoordinate == newCoordinate.yCoordinate)
+            if (oldCoordinate.XCoordinate == newCoordinate.XCoordinate || oldCoordinate.YCoordinate == newCoordinate.YCoordinate)
             {
                 checkMove = true;
             }

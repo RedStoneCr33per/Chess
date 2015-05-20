@@ -12,9 +12,9 @@ namespace Chess
         {
             bool checkMove = false;
 
-            if (newCoordinate.xCoordinate - oldCoordinate.xCoordinate == newCoordinate.yCoordinate - oldCoordinate.yCoordinate
-                || oldCoordinate.xCoordinate - newCoordinate.xCoordinate == oldCoordinate.yCoordinate - newCoordinate.yCoordinate
-                || oldCoordinate.xCoordinate - newCoordinate.xCoordinate == newCoordinate.yCoordinate - oldCoordinate.yCoordinate)
+            if (newCoordinate.XCoordinate - oldCoordinate.XCoordinate == newCoordinate.YCoordinate - oldCoordinate.YCoordinate
+                || oldCoordinate.XCoordinate - newCoordinate.XCoordinate == oldCoordinate.YCoordinate - newCoordinate.YCoordinate
+                || oldCoordinate.XCoordinate - newCoordinate.XCoordinate == newCoordinate.YCoordinate - oldCoordinate.YCoordinate)
             {
                 checkMove = true;
             }

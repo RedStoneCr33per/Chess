@@ -1,0 +1,68 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Chess
+{
+    class Pawn : Piece
+    {
+        public override bool Move(Coordinate oldCoordinate, Coordinate newCoordinate)
+        {
+            bool checkMove = false;
+
+            int moveDirection = 0;
+
+            List<PieceTracker> pieceListAtNewCoordinate = (from piece in GameBoard.game.PieceList
+                                                           where piece.Coordinate.XCoordinate.Equals(newCoordinate.XCoordinate)
+                                                           & piece.Coordinate.YCoordinate.Equals(newCoordinate.YCoordinate)
+                                                           select piece).ToList();
+
+            if (GameBoard.game.CurrentPlayer == Player.White)
+            {
+                moveDirection = 1;
+            }
+
+            else
+            {
+                moveDirection = -1;
+            }
+
+            if (oldCoordinate.XCoordinate == newCoordinate.XCoordinate && oldCoordinate.YCoordinate + moveDirection == newCoordinate.YCoordinate)
+            {
+                if (pieceListAtNewCoordinate.Count == 0)
+                {
+                    checkMove = true;
+                }
+            }
+
+            else if (moveDirection == 1)
+            {
+                if ((newCoordinate.XCoordinate - oldCoordinate.XCoordinate == 1 && newCoordinate.YCoordinate - oldCoordinate.YCoordinate == 1)
+                        || (oldCoordinate.XCoordinate - newCoordinate.XCoordinate == 1 && newCoordinate.YCoordinate - oldCoordinate.YCoordinate == 1))
+                {
+                    if (pieceListAtNewCoordinate.Count == 1)
+                    {
+                        checkMove = true;
+                    }
+                }
+            }
+
+            else if (moveDirection == -1)
+            {
+                if ((oldCoordinate.XCoordinate - newCoordinate.XCoordinate == 1 && oldCoordinate.YCoordinate - newCoordinate.YCoordinate == 1)
+                    || (newCoordinate.XCoordinate - oldCoordinate.XCoordinate == 1 && oldCoordinate.YCoordinate - newCoordinate.YCoordinate == 1))
+                {
+                    if (pieceListAtNewCoordinate.Count == 1)
+                    {
+                        checkMove = true;
+                    }
+                }
+
+            }
+
+            return checkMove;
+        }
+    }
+}
