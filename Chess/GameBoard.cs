@@ -16,7 +16,7 @@ namespace Chess
         static Coordinate oldCoordinate;
         static Coordinate newCoordinate;
         static string output = "";
-        public  static Game game;
+        public static Game game;
         static PictureBox pictureBox1;
         static Color pictureBox1Color;
         static PictureBox pictureBox2;
