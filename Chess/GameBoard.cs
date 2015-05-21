@@ -46,42 +46,74 @@ namespace Chess
             #region whitePieces
 
             zeroOne.ImageLocation = @"PieceImages/P1Pawn.png";
+            zeroOne.SizeMode = PictureBoxSizeMode.Zoom;
             oneOne.ImageLocation = @"PieceImages/P1Pawn.png";
+            oneOne.SizeMode = PictureBoxSizeMode.Zoom;
             twoOne.ImageLocation = @"PieceImages/P1Pawn.png";
+            twoOne.SizeMode = PictureBoxSizeMode.Zoom;
             threeOne.ImageLocation = @"PieceImages/P1Pawn.png";
+            threeOne.SizeMode = PictureBoxSizeMode.Zoom;
             fourOne.ImageLocation = @"PieceImages/P1Pawn.png";
+            fourOne.SizeMode = PictureBoxSizeMode.Zoom;
             fiveOne.ImageLocation = @"PieceImages/P1Pawn.png";
+            fiveOne.SizeMode = PictureBoxSizeMode.Zoom;
             sixOne.ImageLocation = @"PieceImages/P1Pawn.png";
+            sixOne.SizeMode = PictureBoxSizeMode.Zoom;
             sevenOne.ImageLocation = @"PieceImages/P1Pawn.png";
+            sevenOne.SizeMode = PictureBoxSizeMode.Zoom;
             zeroZero.ImageLocation = @"PieceImages/P1Rook.png";
+            zeroZero.SizeMode = PictureBoxSizeMode.Zoom;
             oneZero.ImageLocation = @"PieceImages/P1Bishop.png";
+            oneZero.SizeMode = PictureBoxSizeMode.Zoom;
             twoZero.ImageLocation = @"PieceImages/P1Knight.png";
+            twoZero.SizeMode = PictureBoxSizeMode.Zoom;
             threeZero.ImageLocation = @"PieceImages/P1Queen.png";
+            threeZero.SizeMode = PictureBoxSizeMode.Zoom;
             fourZero.ImageLocation = @"PieceImages/P1King.png";
+            fourZero.SizeMode = PictureBoxSizeMode.Zoom;
             fiveZero.ImageLocation = @"PieceImages/P1Knight.png";
+            fiveZero.SizeMode = PictureBoxSizeMode.Zoom;
             sixZero.ImageLocation = @"PieceImages/P1Bishop.png";
+            sixZero.SizeMode = PictureBoxSizeMode.Zoom;
             sevenZero.ImageLocation = @"PieceImages/P1Rook.png";
+            sevenZero.SizeMode = PictureBoxSizeMode.Zoom;
 
             #endregion
 
             #region blackPieces
 
             zeroSix.ImageLocation = @"PieceImages/P2Pawn.png";
+            zeroSix.SizeMode = PictureBoxSizeMode.Zoom;
             oneSix.ImageLocation = @"PieceImages/P2Pawn.png";
+            oneSix.SizeMode = PictureBoxSizeMode.Zoom;
             twoSix.ImageLocation = @"PieceImages/P2Pawn.png";
+            twoSix.SizeMode = PictureBoxSizeMode.Zoom;
             threeSix.ImageLocation = @"PieceImages/P2Pawn.png";
+            threeSix.SizeMode = PictureBoxSizeMode.Zoom;
             fourSix.ImageLocation = @"PieceImages/P2Pawn.png";
+            fourSix.SizeMode = PictureBoxSizeMode.Zoom;
             fiveSix.ImageLocation = @"PieceImages/P2Pawn.png";
+            fiveSix.SizeMode = PictureBoxSizeMode.Zoom;
             sixSix.ImageLocation = @"PieceImages/P2Pawn.png";
+            sixSix.SizeMode = PictureBoxSizeMode.Zoom;
             sevenSix.ImageLocation = @"PieceImages/P2Pawn.png";
+            sevenSix.SizeMode = PictureBoxSizeMode.Zoom;
             zeroSeven.ImageLocation = @"PieceImages/P2Rook.png";
+            zeroSeven.SizeMode = PictureBoxSizeMode.Zoom;
             oneSeven.ImageLocation = @"PieceImages/P2Bishop.png";
+            oneSeven.SizeMode = PictureBoxSizeMode.Zoom;
             twoSeven.ImageLocation = @"PieceImages/P2Knight.png";
+            twoSeven.SizeMode = PictureBoxSizeMode.Zoom;
             threeSeven.ImageLocation = @"PieceImages/P2Queen.png";
+            threeSeven.SizeMode = PictureBoxSizeMode.Zoom;
             fourSeven.ImageLocation = @"PieceImages/P2King.png";
+            fourSeven.SizeMode = PictureBoxSizeMode.Zoom;
             fiveSeven.ImageLocation = @"PieceImages/P2Knight.png";
+            fiveSeven.SizeMode = PictureBoxSizeMode.Zoom;
             sixSeven.ImageLocation = @"PieceImages/P2Bishop.png";
+            sixSeven.SizeMode = PictureBoxSizeMode.Zoom;
             sevenSeven.ImageLocation = @"PieceImages/P2Rook.png";
+            sevenSeven.SizeMode = PictureBoxSizeMode.Zoom;
 
             #endregion
         }
@@ -170,6 +202,7 @@ namespace Chess
 
                             pictureBox1.ImageLocation = "";
                             pictureBox2.ImageLocation = pieceListAtOldCoordinate[0].Piece.ImageString;
+                            pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
                             game.PlayGame();
                             currentPlayer = game.CurrentPlayer;
 
