@@ -12,6 +12,12 @@ namespace Chess
         {
             bool checkMove = false;
 
+            checkMove = VerifyVerticalAndHorizontal(oldCoordinate, newCoordinate, checkMove);
+
+            return checkMove;
+        }
+        public static bool VerifyVerticalAndHorizontal(Coordinate oldCoordinate, Coordinate newCoordinate, bool checkMove)
+        {
             List<Coordinate> pieceRoute = new List<Coordinate>();
 
             if (oldCoordinate.XCoordinate == newCoordinate.XCoordinate)
@@ -110,7 +116,6 @@ namespace Chess
                 }
 
             }
-
             return checkMove;
         }
     }

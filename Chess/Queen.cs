@@ -12,12 +12,12 @@ namespace Chess
         {
             bool checkMove = false;
 
-            if (oldCoordinate.XCoordinate == newCoordinate.XCoordinate || oldCoordinate.YCoordinate == newCoordinate.YCoordinate
-                || newCoordinate.XCoordinate - oldCoordinate.XCoordinate == newCoordinate.YCoordinate - oldCoordinate.YCoordinate
-                || oldCoordinate.XCoordinate - newCoordinate.XCoordinate == oldCoordinate.YCoordinate - newCoordinate.YCoordinate
-                || oldCoordinate.XCoordinate - newCoordinate.XCoordinate == newCoordinate.YCoordinate - oldCoordinate.YCoordinate)
+            //QUEEN = ROOK + BISHOP...
+            checkMove = Rook.VerifyVerticalAndHorizontal(oldCoordinate, newCoordinate, checkMove);
+
+            if (!checkMove)
             {
-                checkMove = true;
+                checkMove = Bishop.VerifyDiagonals(oldCoordinate, newCoordinate, checkMove);
             }
 
             return checkMove;
