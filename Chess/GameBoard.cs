@@ -23,7 +23,6 @@ namespace Chess
         static Color pictureBox2Color;
         static Player currentPlayer;
         PieceTracker currentPiece;
-        //Coordinate pieceCheckCoordinate = new Coordinate();
 
         public GameBoard()
         {
@@ -122,6 +121,12 @@ namespace Chess
 
         private void handleClicks(int x, int y, PictureBox pb)
         {
+            if (game.Check)
+            {
+                pictureBox1.BackColor = pictureBox1Color;
+                pictureBox2.BackColor = pictureBox2Color;
+            }
+
             output = "";
 
             List<PieceTracker> pieceListAtOldCoordinate = (from piece in game.PieceList
@@ -139,6 +144,7 @@ namespace Chess
                 gameLabel.Text = "Click another square...";
                 pictureBox1 = pb;
                 pictureBox1Color = pb.BackColor;
+
                 pb.BackColor = Color.Red;
                 return;
             }
@@ -159,6 +165,7 @@ namespace Chess
 
                 else
                 {
+
                     pictureBox2 = pb;
                     pictureBox2Color = pb.BackColor;
                     pb.BackColor = Color.Red;
@@ -182,10 +189,6 @@ namespace Chess
                     {
                         if (pieceListAtOldCoordinate[0].Piece.Move(oldCoordinate, newCoordinate))
                         {
-
-
-
-
                             if (pieceListAtNewCoordinate.Count == 1 && pieceListAtNewCoordinate[0].Player != currentPlayer)
                             {
                                 //TAKE PIECE!
@@ -208,7 +211,7 @@ namespace Chess
 
                             game.CheckCheckOnThisKingWithOppositePlayerPieces();
 
-                            if (game.Check && game.CheckPlayer == currentPlayer)
+                            if (game.Check && game.PlayerInCheck == currentPlayer)
                             {
                                 game.CheckCheckOnThisKingWithOppositePlayerPieces();
                                 if (game.Check)
@@ -219,9 +222,7 @@ namespace Chess
                                         XCoordinate = oldCoordinate.XCoordinate,
                                         YCoordinate = oldCoordinate.YCoordinate
                                     };
-                                    gameLabel.Text = game.CheckPlayer.ToString() + " must be moved out of Check\r\nor unable to move into Check";
-                                    pictureBox1.BackColor = pictureBox1Color;
-                                    pictureBox2.BackColor = pictureBox2Color;
+                                    gameLabel.Text = game.PlayerInCheck.ToString() + " must be moved out of Check\r\nor unable to move into Check";
                                     return;
                                 }
                             }
@@ -250,7 +251,7 @@ namespace Chess
                             {
                                 gameLabel.Text = game.CurrentPlayer.ToString() + " is in Check...";
 
-                                game.CheckPlayer = currentPlayer;
+                                game.PlayerInCheck = currentPlayer;
 
                                 pictureBox1.BackColor = pictureBox1Color;
                                 pictureBox2.BackColor = pictureBox2Color;
@@ -809,8 +810,6 @@ namespace Chess
         }
 
         #endregion
-
-
 
     }
 }

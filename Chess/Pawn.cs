@@ -44,7 +44,7 @@ namespace Chess
                 {
                     if (pieceListAtNewCoordinate.Count == 1)
                     {
-                        checkMove = true;
+                        checkMove = pawnCannotCheckKing(checkMove, pieceListAtNewCoordinate);
                     }
                 }
             }
@@ -56,12 +56,26 @@ namespace Chess
                 {
                     if (pieceListAtNewCoordinate.Count == 1)
                     {
-                        checkMove = true;
+                        checkMove = pawnCannotCheckKing(checkMove, pieceListAtNewCoordinate);
                     }
                 }
 
             }
 
+            return checkMove;
+        }
+
+        private static bool pawnCannotCheckKing(bool checkMove, List<PieceTracker> pieceListAtNewCoordinate)
+        {
+            if (pieceListAtNewCoordinate[0].Piece.Name.Contains("King"))
+            {
+                checkMove = false;
+            }
+
+            else
+            {
+                checkMove = true;
+            }
             return checkMove;
         }
     }

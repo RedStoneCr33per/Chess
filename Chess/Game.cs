@@ -11,7 +11,7 @@ namespace Chess
         private List<PieceTracker> pieceList = new List<PieceTracker>();
         private Player currentPlayer;
         private bool check = false;
-        private Player checkPlayer = Player.Default;
+        private Player playerInCheck = Player.Default;
 
         public List<PieceTracker> PieceList
         {
@@ -49,15 +49,15 @@ namespace Chess
             }
         }
 
-        public Player CheckPlayer
+        public Player PlayerInCheck
         {
             get
             {
-                return checkPlayer;
+                return playerInCheck;
             }
             set
             {
-                checkPlayer = value;
+                playerInCheck = value;
             }
         }
 
@@ -229,33 +229,32 @@ namespace Chess
 
         public void CheckCheckOnThisKingWithOppositePlayerPieces()
         {
-             List<PieceTracker> kingPiece = (from piece in this.PieceList
-                                                where piece.Piece.Name.Contains("King")
-                                                & piece.Player.Equals(this.currentPlayer)
-                                                select piece).ToList();
+            List<PieceTracker> kingPiece = (from piece in this.PieceList
+                                            where piece.Piece.Name.Contains("King")
+                                            & piece.Player.Equals(this.currentPlayer)
+                                            select piece).ToList();
 
-             List<PieceTracker> oppositePlayerPieces = (from piece in this.PieceList
+            List<PieceTracker> oppositePlayerPieces = (from piece in this.PieceList
                                                        where !piece.Player.Equals(this.currentPlayer)
                                                        && !piece.Piece.Name.Contains("Pawn")
                                                        select piece).ToList();
 
-             foreach (PieceTracker piecetracker in oppositePlayerPieces)
-             {
-                 if (piecetracker.Piece.Move(piecetracker.Coordinate, kingPiece[0].Coordinate))
-                 {
-                     //THIS PIECE CAN ATTACK THE KING
-                     this.check = true;
-                     //return;
-                     break;
-                 }
+            foreach (PieceTracker piecetracker in oppositePlayerPieces)
+            {
+                if (piecetracker.Piece.Move(piecetracker.Coordinate, kingPiece[0].Coordinate))
+                {
+                    //THIS PIECE CAN ATTACK THE KING
+                    this.check = true;
+                    break;
+                }
 
-                 else
-                 {
-                     this.check = false;
-                     //break;
-                 }
-             }
+                else
+                {
+                    this.check = false;
+                }
+            }
         }
+
     }
 
     public enum Player
