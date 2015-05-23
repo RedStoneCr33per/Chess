@@ -1,11 +1,3 @@
-C:\Users\petedarden\documents\visual studio 2013\Projects\Chess\Chess\bin\Debug\Chess.exe.config
-C:\Users\petedarden\documents\visual studio 2013\Projects\Chess\Chess\bin\Debug\Chess.exe
-C:\Users\petedarden\documents\visual studio 2013\Projects\Chess\Chess\bin\Debug\Chess.pdb
-C:\Users\petedarden\documents\visual studio 2013\Projects\Chess\Chess\obj\Debug\Chess.Properties.Resources.resources
-C:\Users\petedarden\documents\visual studio 2013\Projects\Chess\Chess\obj\Debug\Chess.csproj.GenerateResource.Cache
-C:\Users\petedarden\documents\visual studio 2013\Projects\Chess\Chess\obj\Debug\Chess.exe
-C:\Users\petedarden\documents\visual studio 2013\Projects\Chess\Chess\obj\Debug\Chess.pdb
-C:\Users\petedarden\documents\visual studio 2013\Projects\Chess\Chess\obj\Debug\Chess.csprojResolveAssemblyReference.cache
 C:\Users\petedarden\documents\visual studio 2013\Projects\Chess\Chess\bin\Debug\PieceImages\P1Bishop.png
 C:\Users\petedarden\documents\visual studio 2013\Projects\Chess\Chess\bin\Debug\PieceImages\P1King.png
 C:\Users\petedarden\documents\visual studio 2013\Projects\Chess\Chess\bin\Debug\PieceImages\P1Knight.png
@@ -18,4 +10,12 @@ C:\Users\petedarden\documents\visual studio 2013\Projects\Chess\Chess\bin\Debug\
 C:\Users\petedarden\documents\visual studio 2013\Projects\Chess\Chess\bin\Debug\PieceImages\P2Pawn.png
 C:\Users\petedarden\documents\visual studio 2013\Projects\Chess\Chess\bin\Debug\PieceImages\P2Queen.png
 C:\Users\petedarden\documents\visual studio 2013\Projects\Chess\Chess\bin\Debug\PieceImages\P2Rook.png
+C:\Users\petedarden\documents\visual studio 2013\Projects\Chess\Chess\bin\Debug\Chess.exe.config
+C:\Users\petedarden\documents\visual studio 2013\Projects\Chess\Chess\bin\Debug\Chess.exe
+C:\Users\petedarden\documents\visual studio 2013\Projects\Chess\Chess\bin\Debug\Chess.pdb
+C:\Users\petedarden\documents\visual studio 2013\Projects\Chess\Chess\obj\Debug\Chess.csprojResolveAssemblyReference.cache
 C:\Users\petedarden\documents\visual studio 2013\Projects\Chess\Chess\obj\Debug\Chess.GameBoard.resources
+C:\Users\petedarden\documents\visual studio 2013\Projects\Chess\Chess\obj\Debug\Chess.Properties.Resources.resources
+C:\Users\petedarden\documents\visual studio 2013\Projects\Chess\Chess\obj\Debug\Chess.csproj.GenerateResource.Cache
+C:\Users\petedarden\documents\visual studio 2013\Projects\Chess\Chess\obj\Debug\Chess.exe
+C:\Users\petedarden\documents\visual studio 2013\Projects\Chess\Chess\obj\Debug\Chess.pdb

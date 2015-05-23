@@ -10,6 +10,8 @@ namespace Chess
     {
         private List<PieceTracker> pieceList = new List<PieceTracker>();
         private Player currentPlayer;
+        private bool check = false;
+        private Player checkPlayer = Player.Default;
 
         public List<PieceTracker> PieceList
         {
@@ -35,10 +37,35 @@ namespace Chess
             }
         }
 
+        public bool Check
+        {
+            get
+            {
+                return check;
+            }
+            set
+            {
+                check = value;
+            }
+        }
+
+        public Player CheckPlayer
+        {
+            get
+            {
+                return checkPlayer;
+            }
+            set
+            {
+                checkPlayer = value;
+            }
+        }
+
         public Game()
         {
             this.addPiecesToGameList();
             this.currentPlayer = Player.Black;
+            this.check = false;
         }
 
         private void addPiecesToGameList()
@@ -197,7 +224,37 @@ namespace Chess
             {
                 this.currentPlayer = Player.White;
             }
- 
+
+        }
+
+        public void CheckCheckOnThisKingWithOppositePlayerPieces()
+        {
+             List<PieceTracker> kingPiece = (from piece in this.PieceList
+                                                where piece.Piece.Name.Contains("King")
+                                                & piece.Player.Equals(this.currentPlayer)
+                                                select piece).ToList();
+
+             List<PieceTracker> oppositePlayerPieces = (from piece in this.PieceList
+                                                       where !piece.Player.Equals(this.currentPlayer)
+                                                       && !piece.Piece.Name.Contains("Pawn")
+                                                       select piece).ToList();
+
+             foreach (PieceTracker piecetracker in oppositePlayerPieces)
+             {
+                 if (piecetracker.Piece.Move(piecetracker.Coordinate, kingPiece[0].Coordinate))
+                 {
+                     //THIS PIECE CAN ATTACK THE KING
+                     this.check = true;
+                     //return;
+                     break;
+                 }
+
+                 else
+                 {
+                     this.check = false;
+                     //break;
+                 }
+             }
         }
     }
 

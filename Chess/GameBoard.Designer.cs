@@ -163,7 +163,7 @@
             // 
             this.gameLabel.AutoSize = true;
             this.gameLabel.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gameLabel.Location = new System.Drawing.Point(49, 21);
+            this.gameLabel.Location = new System.Drawing.Point(49, 9);
             this.gameLabel.Name = "gameLabel";
             this.gameLabel.Size = new System.Drawing.Size(109, 23);
             this.gameLabel.TabIndex = 0;
