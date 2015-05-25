@@ -37,6 +37,21 @@ namespace Chess
                 }
             }
 
+            //PAWNS ARE ABLE TO MOVE 2 SQUARES ON THE FIRST MOVE
+            //WHITE CASE
+            else if (moveDirection == 1 && oldCoordinate.YCoordinate == 1 && newCoordinate.YCoordinate == oldCoordinate.YCoordinate + 2)
+            {
+                checkMove = true;
+            }
+
+            //PAWNS ARE ABLE TO MOVE 2 SQUARES ON THE FIRST MOVE
+            //BLACK CASE
+
+            else if (moveDirection == -1 && oldCoordinate.YCoordinate == 6 && newCoordinate.YCoordinate == oldCoordinate.YCoordinate - 2)
+            {
+                checkMove = true;
+            }
+
             else if (moveDirection == 1)
             {
                 if ((newCoordinate.XCoordinate - oldCoordinate.XCoordinate == 1 && newCoordinate.YCoordinate - oldCoordinate.YCoordinate == 1)
