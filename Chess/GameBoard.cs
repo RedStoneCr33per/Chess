@@ -121,6 +121,11 @@ namespace Chess
 
         private void handleClicks(int x, int y, PictureBox pb)
         {
+            if (game.Checkmate)
+            {
+                return;
+            }
+
             if (game.Check)
             {
                 pictureBox1.BackColor = pictureBox1Color;
@@ -223,6 +228,32 @@ namespace Chess
                                         YCoordinate = oldCoordinate.YCoordinate
                                     };
                                     gameLabel.Text = game.PlayerInCheck.ToString() + " must be moved out of Check\r\nor unable to move into Check";
+
+                                    ///////////////////////////////////////////////////////////////////////////////////
+                                    ///////////////////////////////////////////////////////////////////////////////////
+                                    game.CheckCheckMate();
+
+
+
+                                    if (game.Checkmate)
+                                    {
+                                        Player winningPlayer;
+
+                                        if (game.CurrentPlayer == Player.Black)
+                                        {
+                                            winningPlayer = Player.White;
+                                        }
+
+                                        else
+                                        {
+                                            winningPlayer = Player.Black;
+                                        }
+
+                                        gameLabel.Text = "Checkmate! The winner is: " + winningPlayer.ToString();
+                                    }
+                                    ///////////////////////////////////////////////////////////////////////////////////
+                                    ///////////////////////////////////////////////////////////////////////////////////
+
                                     return;
                                 }
                             }
@@ -255,12 +286,24 @@ namespace Chess
 
                                 pictureBox1.BackColor = pictureBox1Color;
                                 pictureBox2.BackColor = pictureBox2Color;
+
+                                /////////////////////////////////////////////////////////////////////////////////////
+                                /////////////////////////////////////////////////////////////////////////////////////
+                                //game.CheckCheckMate();
+                                /////////////////////////////////////////////////////////////////////////////////////
+                                /////////////////////////////////////////////////////////////////////////////////////
+
                                 return;
                             }
 
                             pictureBox1.BackColor = pictureBox1Color;
                             pictureBox2.BackColor = pictureBox2Color;
 
+                            ///////////////////////////////////////////////////////////////////////////////////
+                            ///////////////////////////////////////////////////////////////////////////////////
+                            //game.CheckCheckMate();
+                            ///////////////////////////////////////////////////////////////////////////////////
+                            ///////////////////////////////////////////////////////////////////////////////////
                         }
 
                         else

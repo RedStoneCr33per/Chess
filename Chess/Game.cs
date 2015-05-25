@@ -12,6 +12,7 @@ namespace Chess
         private Player currentPlayer;
         private bool check = false;
         private Player playerInCheck = Player.Default;
+        private bool checkmate = false;
 
         public List<PieceTracker> PieceList
         {
@@ -58,6 +59,18 @@ namespace Chess
             set
             {
                 playerInCheck = value;
+            }
+        }
+
+        public bool Checkmate
+        {
+            get
+            {
+                return checkmate;
+            }
+            set
+            {
+                checkmate = value;
             }
         }
 
@@ -255,6 +268,114 @@ namespace Chess
             }
         }
 
+        public void CheckCheckMate()
+        {
+            //CHECK SITUATION CURRENTLY HARD CODED FOR TESTING!
+            if (!this.check)
+            {
+                return;
+            }
+
+            else
+            {
+                List<CheckmateState> checkmateStateList = new List<CheckmateState>();
+
+                List<PieceTracker> playerPieces = (from piece in this.PieceList
+                                                   where piece.Player.Equals(this.currentPlayer)
+                                                   && !piece.Piece.Name.Contains("Pawn")
+                                                   select piece).ToList();
+
+                List<Coordinate> fullBoard = new List<Coordinate>();
+
+                for (int j = 0; j < 8; j++)
+                {
+
+
+                    for (int i = 0; i < 8; i++)
+                    {
+                        fullBoard.Add(new Coordinate() { XCoordinate = i, YCoordinate = j });
+                    }
+
+                }
+
+
+                foreach (PieceTracker piecetracker in playerPieces)
+                {
+                    foreach (Coordinate coordinate in fullBoard)
+                    {
+                        //CHECK IF EACH PIECE IS ABLE TO MOVE TO ANY PIECE ON THE BOARD
+                        //IF MOVE IS NOT VALID - CONTINUE
+                        if (!piecetracker.Piece.Move(piecetracker.Coordinate, coordinate))
+                        {
+                            continue;
+                        }
+
+                        //IF MOVE IS VALID, SIMULATE THE MOVE TO THE NEW COORDINATE AND CHECK CHECK
+                        else
+                        {
+                            //GET LIST INDEX OF THE CURRENT PIECE FROM THE GAME MASTER PIECE LIST
+                            int pieceIndex = this.PieceList.FindIndex(piece =>
+                               piece.Coordinate.XCoordinate == piecetracker.Coordinate.XCoordinate
+                               && piece.Coordinate.YCoordinate == piecetracker.Coordinate.YCoordinate);
+
+                            //SIMULATE THE MOVE - THE MOVE IS ALREADY KNOWN TO BE A VALID MOVE AT THIS POINT
+                            Coordinate oldCoordinate = piecetracker.Coordinate;
+                            this.PieceList[pieceIndex].Coordinate = coordinate;
+
+                            //CHECK CHECK OF THE KING WITH THE PIECE ON THE NEW SQUARE
+                            CheckCheckOnThisKingWithOppositePlayerPieces();
+
+                            if (!this.Check)
+                            {
+                                //THERE IS A MOVE AVAILABLE TO THE PLAYER, SO THE GAME IS DEFINITELY NOT IN CHECKMATE
+                                //this.PieceList[pieceIndex].Coordinate = oldCoordinate;
+                                checkmateStateList.Add(CheckmateState.MoveAvailable);
+                                //REVERSE THE SIMULATED MOVE
+                                this.PieceList[pieceIndex].Coordinate = oldCoordinate;
+                                break;
+
+
+
+                            }
+
+                            else
+                            {
+                                checkmateStateList.Add(CheckmateState.NoMoveAvailable);
+                                //REVERSE THE SIMULATED MOVE
+                                this.PieceList[pieceIndex].Coordinate = oldCoordinate;
+                            }
+
+                            //REVERSE THE SIMULATED MOVE
+                            //this.PieceList[pieceIndex].Coordinate = oldCoordinate;
+
+ 
+                        }
+                    }
+                }
+
+
+                //OUTSIDE OF ALL THE FOREACH LOOPS - THE PROGRAM SHOULD BREAK AND COME TO THIS POINT
+                //NEXT IF THERE ARE MOVES AVAILABLE TO currentPlayer
+
+                List<CheckmateState> checkIfMovesAvailable = (from cs in checkmateStateList
+                                                              where cs.Equals(CheckmateState.MoveAvailable)
+                                                              select cs).ToList();
+
+                if (checkIfMovesAvailable.Count >= 1)
+                {
+                    //GAME IS NOT IN CHECKMATE
+                    return;
+                }
+
+                else
+                {
+                    //NO MOVES AVAILABLE - GAME IS IN CHECKMATE!
+                    this.checkmate = true;
+                }
+
+            }
+        }
+
     }
 
     public enum Player
@@ -262,5 +383,11 @@ namespace Chess
         Default,
         White,
         Black
+    }
+
+    enum CheckmateState
+    {
+        MoveAvailable,
+        NoMoveAvailable
     }
 }
