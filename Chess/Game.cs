@@ -240,6 +240,55 @@ namespace Chess
 
         }
 
+        public void PiecePromotion(int endYCoordinate, string queenPieceName, string queenImageString, string knightPieceName, string knightImageString,
+            System.Windows.Forms.PictureBox pictureBox2, Coordinate newCoordinate)
+        {
+            //IF A WHITE PAWN GETS TO THE TOP OF THE BOARD, OR A BLACK PIECE TO THE BOTTOM, THE PIECE CAN BE PROMOTED
+            List<PieceTracker> pawnPromotionCheck = (from piece in this.PieceList
+                                                          where piece.Piece.Name.Contains("Pawn")
+                                                          && piece.Coordinate.YCoordinate == endYCoordinate
+                                                          select piece).ToList();
+
+            if (pawnPromotionCheck.Count > 0)
+            {
+                System.Windows.Forms.DialogResult pieceSelection = System.Windows.Forms.MessageBox.Show
+                    ("Would you like a Knight or a Queen? Press 'Yes' for a Queen, and 'No' for a Knight",
+                     "PIECE PROMOTION!", System.Windows.Forms.MessageBoxButtons.YesNo);
+
+                Piece promotedPiece;
+
+                int indexOfCurrentPawn = this.PieceList.FindIndex(piece =>
+                    piece.Coordinate.XCoordinate == newCoordinate.XCoordinate
+                    && piece.Coordinate.YCoordinate == newCoordinate.YCoordinate);
+
+                if (pieceSelection == System.Windows.Forms.DialogResult.Yes)
+                {
+                    promotedPiece = new Queen();
+                    this.PieceList[indexOfCurrentPawn].Piece = promotedPiece;
+                    this.PieceList[indexOfCurrentPawn].Piece.Name = queenPieceName;
+                    this.PieceList[indexOfCurrentPawn].Piece.ImageString = queenImageString;
+                    pictureBox2.ImageLocation = queenImageString;
+                    pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+                }
+
+                else
+                {
+                    promotedPiece = new Knight();
+                    this.PieceList[indexOfCurrentPawn].Piece = promotedPiece;
+                    this.PieceList[indexOfCurrentPawn].Piece.Name = knightPieceName;
+                    this.PieceList[indexOfCurrentPawn].Piece.ImageString = knightImageString;
+                    pictureBox2.ImageLocation = knightImageString;
+                    pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+                }
+
+            }
+
+
+
+
+
+        }
+
         public void CheckCheckOnThisKingWithOppositePlayerPieces()
         {
             List<PieceTracker> kingPiece = (from piece in this.PieceList

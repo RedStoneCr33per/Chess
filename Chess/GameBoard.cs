@@ -233,8 +233,6 @@ namespace Chess
                                     ///////////////////////////////////////////////////////////////////////////////////
                                     game.CheckCheckMate();
 
-
-
                                     if (game.Checkmate)
                                     {
                                         Player winningPlayer;
@@ -276,6 +274,10 @@ namespace Chess
                             {
                                 output = game.CurrentPlayer.ToString() + " player's" + " turn...";
                             }
+
+                            //PIECE PROMOTION CHECKS
+                            game.PiecePromotion(7, "White Queen", @"PieceImages/P1Queen.png", "White Knight", @"PieceImages/P1Knight.png", pictureBox2, newCoordinate);
+                            game.PiecePromotion(0, "Black Queen", @"PieceImages/P2Queen.png", "Black Knight", @"PieceImages/P2Knight.png", pictureBox2, newCoordinate);
 
                             game.CheckCheckOnThisKingWithOppositePlayerPieces();
                             if (game.Check)
