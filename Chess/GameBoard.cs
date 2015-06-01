@@ -249,8 +249,6 @@ namespace Chess
 
                                         gameLabel.Text = "Checkmate! The winner is: " + winningPlayer.ToString();
                                     }
-                                    ///////////////////////////////////////////////////////////////////////////////////
-                                    ///////////////////////////////////////////////////////////////////////////////////
 
                                     return;
                                 }
@@ -262,6 +260,26 @@ namespace Chess
                             pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
 
                             currentPiece = pieceListAtOldCoordinate[0];
+
+                            //UNABLE TO MOVE INTO CHECK...
+                            game.CheckCheckOnThisKingWithOppositePlayerPieces();
+
+                            if (game.Check)
+                            {
+                                game.PieceList[pieceIndex].Coordinate = new Coordinate()
+                                {
+                                    XCoordinate = oldCoordinate.XCoordinate,
+                                    YCoordinate = oldCoordinate.YCoordinate
+                                };
+
+                                pictureBox1.ImageLocation = game.PieceList[pieceIndex].Piece.ImageString;
+                                pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+                                pictureBox2.ImageLocation = "";
+
+                                gameLabel.Text = "Unable to move into Check...";
+                                return;
+                            }
+
                             game.PlayGame();
                             currentPlayer = game.CurrentPlayer;
 
@@ -289,23 +307,12 @@ namespace Chess
                                 pictureBox1.BackColor = pictureBox1Color;
                                 pictureBox2.BackColor = pictureBox2Color;
 
-                                /////////////////////////////////////////////////////////////////////////////////////
-                                /////////////////////////////////////////////////////////////////////////////////////
-                                //game.CheckCheckMate();
-                                /////////////////////////////////////////////////////////////////////////////////////
-                                /////////////////////////////////////////////////////////////////////////////////////
-
                                 return;
                             }
 
                             pictureBox1.BackColor = pictureBox1Color;
                             pictureBox2.BackColor = pictureBox2Color;
 
-                            ///////////////////////////////////////////////////////////////////////////////////
-                            ///////////////////////////////////////////////////////////////////////////////////
-                            //game.CheckCheckMate();
-                            ///////////////////////////////////////////////////////////////////////////////////
-                            ///////////////////////////////////////////////////////////////////////////////////
                         }
 
                         else

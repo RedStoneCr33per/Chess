@@ -18,3 +18,4 @@ C:\Users\petedarden\documents\visual studio 2013\Projects\Chess\Chess\obj\Debug\
 C:\Users\petedarden\documents\visual studio 2013\Projects\Chess\Chess\obj\Debug\Chess.csproj.GenerateResource.Cache
 C:\Users\petedarden\documents\visual studio 2013\Projects\Chess\Chess\obj\Debug\Chess.exe
 C:\Users\petedarden\documents\visual studio 2013\Projects\Chess\Chess\obj\Debug\Chess.pdb
+C:\Users\petedarden\documents\visual studio 2013\Projects\Chess\Chess\obj\Debug\Chess.csprojResolveAssemblyReference.cache
